@@ -4,118 +4,224 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holy in the Highlights: Finding God in the Daily Grind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3b82f6;
-            --primary-hover: #2563eb;
-            --text-main: #1f2937;
-            --text-muted: #4b5563;
-            --bg-body: #f3f4f6;
+            --primary: #4f46e5;
+            --primary-light: #e0e7ff;
+            --text-heading: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --bg-page: #f8fafc;
             --bg-card: #ffffff;
-            --border-color: #e5e7eb;
+            --border-color: #f1f5f9;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            color: var(--text-main);
-            background-color: var(--bg-body);
-            margin: 0;
-            padding: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.8;
+            color: var(--text-body);
+            background-color: var(--bg-page);
+            padding: 40px 16px;
+            -webkit-font-smoothing: antialiased;
         }
 
         .blog-container {
-            max-width: 740px;
-            margin: 20px auto;
+            max-width: 760px;
+            margin: 0 auto;
             background-color: var(--bg-card);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            overflow: hidden;
         }
 
         .blog-header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding: 56px 48px 32px 48px;
             text-align: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .blog-category {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary);
+            background-color: var(--primary-light);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            margin-bottom: 16px;
         }
 
         .blog-title {
-            font-size: 2.2rem;
-            color: #111827;
-            margin-bottom: 10px;
-            line-height: 1.25;
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 2.75rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
 
         .blog-meta {
             font-size: 0.95rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-weight: 500;
         }
 
-        h2 {
-            color: #1f2937;
-            font-size: 1.4rem;
-            margin-top: 32px;
-            margin-bottom: 16px;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 12px;
+        .blog-content {
+            padding: 40px 48px 56px 48px;
+        }
+
+        .lead-para {
+            font-size: 1.2rem;
+            color: var(--text-heading);
+            line-height: 1.7;
+            margin-bottom: 24px;
         }
 
         p {
-            margin-bottom: 20px;
-            font-size: 1.05rem;
+            font-size: 1.0625rem;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 1.85rem;
+            color: var(--text-heading);
+            margin: 40px 0 16px 0;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .highlight-quote {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--primary);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 32px 0;
+            font-style: italic;
+            color: var(--text-heading);
+            font-size: 1.125rem;
         }
 
         .blog-image-container {
-            margin: 30px 0;
+            margin: 40px 0;
             text-align: center;
         }
 
+        .blog-image-wrapper {
+            background-color: var(--bg-page);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-sm);
+        }
+
         .blog-image {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-image-wrapper:hover .blog-image {
+            transform: scale(1.015);
         }
 
         .image-caption {
             font-size: 0.875rem;
             color: var(--text-muted);
-            margin-top: 8px;
+            margin-top: 12px;
             font-style: italic;
         }
 
-        ul {
-            background-color: #f9fafb;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px 20px 20px 40px;
-            margin-bottom: 24px;
+        ul.practical-list {
+            list-style: none;
+            margin: 32px 0;
+            padding: 0;
         }
 
-        li {
-            margin-bottom: 12px;
+        ul.practical-list li {
+            position: relative;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            padding: 20px 24px 20px 60px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
             font-size: 1.02rem;
         }
 
-        li:last-child {
-            margin-bottom: 0;
+        ul.practical-list li::before {
+            content: "→";
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            width: 28px;
+            height: 28px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
         }
 
-        hr {
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(226,232,240,0) 0%, rgba(226,232,240,1) 50%, rgba(226,232,240,0) 100%);
+            margin: 40px 0;
             border: none;
-            border-top: 1px solid var(--border-color);
-            margin: 36px 0;
         }
 
-        @media (max-width: 600px) {
-            .blog-container {
-                padding: 20px;
+        @media (max-width: 640px) {
+            body {
+                padding: 12px 8px;
             }
-            
+
+            .blog-header {
+                padding: 36px 20px 24px 20px;
+            }
+
             .blog-title {
-                font-size: 1.75rem;
+                font-size: 2rem;
+            }
+
+            .blog-content {
+                padding: 28px 20px 36px 20px;
+            }
+
+            .lead-para {
+                font-size: 1.1rem;
+            }
+
+            ul.practical-list li {
+                padding: 16px 16px 16px 48px;
+            }
+
+            ul.practical-list li::before {
+                left: 14px;
+                top: 16px;
+                width: 24px;
+                height: 24px;
             }
         }
     </style>
@@ -125,28 +231,31 @@
     <article class="blog-container">
         
         <header class="blog-header">
+            <span class="blog-category">Youth &amp; Faith</span>
             <h1 class="blog-title">Holy in the Highlights: Finding God in the Daily Grind</h1>
             <div class="blog-meta">By: A Catholic Youth Blogger</div>
         </header>
 
         <section class="blog-content">
-            <p>Have you ever looked at pictures of saints with glowing halos and thought, <em>"Yeah, that’s never going to be me"</em>?</p>
+            <p class="lead-para">Have you ever looked at pictures of saints with glowing halos and thought, <em>"Yeah, that’s never going to be me"</em>?</p>
 
             <p>Between endless school assignments, doomscrolling on TikTok, trying to maintain a social life, and managing daily stress, trying to be "holy" can feel completely out of reach. Most of us aren't called to move to a monastery or spend eight hours a day in silent prayer. So, how are we supposed to live out God’s call to holiness when our everyday lives are so crowded and noisy?</p>
 
             <p>The answer is much simpler—and much closer to home—than you might think.</p>
 
-            <hr>
+            <hr class="divider">
 
             <h2>The Secret: Turning Daily Tasks into Prayer</h2>
 
-            <p>A wonderful Catholic saint named <strong>St. Josemaria Escriva</strong> taught something revolutionary for regular people like us: <strong>you don't need extraordinary circumstances to become a saint; you just need to do ordinary things extraordinarily well for God.</strong></p>
+            <div class="highlight-quote">
+                "You don't need extraordinary circumstances to become a saint; you just need to do ordinary things extraordinarily well for God." — St. Josemaria Escriva
+            </div>
 
             <p>St. Josemaria explained that our daily work, our studies, and our ordinary duties can actually become our prayer. When you sit down to study for a difficult exam, clean your bedroom, or practice a sport, you don't have to separate that from your faith. When you offer those efforts up to God with love, those moment-to-moment tasks become holy.</p>
 
             <p>You don't have to escape the real world to find God; He is waiting for you right in the middle of your standard daily schedule.</p>
 
-            <hr>
+            <hr class="divider">
 
             <h2>The Modern Struggle: Distraction &amp; Disconnection</h2>
 
@@ -158,17 +267,19 @@
 
             <!-- Image 1 -->
             <figure class="blog-image-container">
-                <img class="blog-image" src="https://lh3.googleusercontent.com/d/1zqbgjIfxNJR5qSGFsy__IBHhdcYfxMPL" alt="Student studying with focus">
+                <div class="blog-image-wrapper">
+                    <img class="blog-image" src="https://lh3.googleusercontent.com/d/1zqbgjIfxNJR5qSGFsy__IBHhdcYfxMPL" alt="Student studying with focus">
+                </div>
                 <figcaption class="image-caption">Offering up your daily studies turns ordinary hard work into prayer.</figcaption>
             </figure>
 
-            <hr>
+            <hr class="divider">
 
             <h2>3 Practical Ways to Practice Holiness Today</h2>
 
             <p>If you want to start building real virtue and grace in your life, you don't need a total life overhaul. Start with these three practical steps:</p>
 
-            <ul>
+            <ul class="practical-list">
                 <li><strong>Offer Up Your Work (The Morning Offering):</strong> Before you start your homework or open your textbook, take five seconds to say: <em>"Lord, I offer this study session to You. Help me do my best."</em> Suddenly, studying isn't just a chore—it’s an act of love.</li>
                 <li><strong>Set Tech Boundaries:</strong> Before scrolling through social media, pause and ask yourself if it's drawing you closer to good things or just wasting your energy. Use the <strong>THINK</strong> test before posting or replying: Is it <em>True</em>, <em>Helpful</em>, <em>Inspiring</em>, <em>Necessary</em>, or <em>Kind</em>?</li>
                 <li><strong>Look to Modern Models:</strong> Look at <strong>Blessed Carlo Acutis</strong>, the first millennial saint. He loved computer programming, playing video games, and hanging out with friends, but he also used his tech skills to build a website cataloging Eucharistic miracles. He showed us that a young person in the digital age can be a saint without giving up being a normal teenager.</li>
@@ -176,11 +287,13 @@
 
             <!-- Image 2 -->
             <figure class="blog-image-container">
-                <img class="blog-image" src="https://lh3.googleusercontent.com/d/1Bv2udT0UMz9uo-vOIZY0AczbyWj4WoDU" alt="1 Corinthians 16:14 Scripture Graphic">
+                <div class="blog-image-wrapper">
+                    <img class="blog-image" src="https://lh3.googleusercontent.com/d/1Bv2udT0UMz9uo-vOIZY0AczbyWj4WoDU" alt="1 Corinthians 16:14 Scripture Graphic">
+                </div>
                 <figcaption class="image-caption">Holiness is simply doing everyday things with extraordinary love.</figcaption>
             </figure>
 
-            <hr>
+            <hr class="divider">
 
             <h2>Small Steps, Eternal Impact</h2>
 
